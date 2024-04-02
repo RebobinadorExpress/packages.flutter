@@ -14,7 +14,8 @@ Future<bool> hasPdfSupport() async {
   }
   if (UniversalPlatform.isAndroid) {
     final androidInfo = await _deviceInfo.androidInfo;
-    return androidInfo.version.sdkInt >= 21;
+    return androidInfo.version.sdkInt != null &&
+        androidInfo.version.sdkInt! >= 21;
   }
   return false;
 }
